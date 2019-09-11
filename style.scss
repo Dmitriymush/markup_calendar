@@ -1,0 +1,40 @@
+@import "variable_paramets";
+@import "_reset.scss";
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, $heigh_width);
+  grid-gap: 1px;
+
+  @for $i from 1 to 31 {
+    div:nth-child(#{$i}) {
+      height: $heigh_width;
+      width: $heigh_width;
+      border: 1px solid black;
+      text-align: center;
+      line-height: $heigh_width;
+      background-color: #eeeeee;
+      box-sizing: border-box;
+      transition: transform 1s, background-color 1s;
+    }
+
+    div:nth-child(#{$i})::after {
+      content: "#{$i}";
+    }
+
+    div:nth-child(#{$i}):hover {
+      background-color: pink;
+      transform: translateY(-20px);
+      cursor: pointer;
+    }
+  }
+}
+
+@each $name, $number in $week_days {
+  .calendar-#{$name} > div:first-of-type {
+    grid-column-start: #{$number};
+  }
+}
+
+
+
