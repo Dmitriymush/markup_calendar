@@ -6,7 +6,7 @@
   grid-template-columns: repeat(7, $heigh_width);
   grid-gap: 1px;
 
-  @for $i from 1 to 31 {
+  @for $i from 1 to 32 {
     div:nth-child(#{$i}) {
       height: $heigh_width;
       width: $heigh_width;
@@ -36,5 +36,13 @@
   }
 }
 
-
+@for $i from 28 through 31 {
+  .calendar-#{$i} {
+    @for $j from $i+1 through 32 {
+      &>div:nth-child(#{$j}) {
+        display: none;
+      }
+    }
+  }
+}
 
